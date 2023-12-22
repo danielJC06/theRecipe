@@ -1,0 +1,53 @@
+# Ignore system files
+.DS_Store
+
+# Ignore temporary files
+*.log
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Ignore compiled files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignore virtual environment
+venv/
+.env
+
+# Ignore dependencies
+node_modules/
+vendor/
+mysql-data/
+
+# Ignore environment-specific files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore database files
+*.sqlite
+*.db
+
+# Ignore local development files
+*.config.local
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore operating system files
+Thumbs.db
+ehthumbs.db
+
+# Ignore application-specific files
+/build/
+
+# Ignore docker-compose files
+docker-compose.override.yml

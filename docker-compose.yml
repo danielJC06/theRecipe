@@ -1,0 +1,37 @@
+# docker-compose.yml
+
+version: "3"
+
+services:
+  db:
+    image: mysql/mysql-server:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: flibbity
+      MYSQL_DATABASE: theRecipe
+      MYSQL_USER: god
+      MYSQL_PASSWORD: fuckme
+    volumes:
+      - ./mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    ports:
+      - "8080:8978"
+    depends_on:
+      - db
+    volumes:
+      - cloudbeaver:/opt/cloudbeaver/workspace
+volumes:
+  mysql-data:
+  cloudbeaver:
+  #backend:
+  # Add configuration for your backend service here
+  # For example, you might use a Node.js or Python image
+
+  #frontend:
+  # Add configuration for your frontend service here
+  # For example, you might use a Node.js or React image
