@@ -25,6 +25,18 @@ services:
       - db
     volumes:
       - cloudbeaver:/opt/cloudbeaver/workspace
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db
+
 volumes:
   mysql-data:
   cloudbeaver:
