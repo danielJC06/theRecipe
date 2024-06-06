@@ -12,7 +12,7 @@ services:
       MYSQL_USER: god
       MYSQL_PASSWORD: fuckme
     volumes:
-      - ./mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
+      - ./database/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
       - mysql-data:/var/lib/mysql
     ports:
       - "3306:3306"

@@ -1,0 +1,9 @@
+type Query {
+  getRecipes: [Recipe]
+}
+
+type Recipe {
+  id: String
+  title: String
+  author: String
+}
