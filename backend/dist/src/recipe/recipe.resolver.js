@@ -12,6 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RecipeResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
 let Recipe = class Recipe {
+    constructor(id, title, author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
 };
 __decorate([
     (0, graphql_1.Field)(),
@@ -20,20 +25,24 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Recipe.prototype, "titles", void 0);
+], Recipe.prototype, "title", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], Recipe.prototype, "author", void 0);
 Recipe = __decorate([
-    (0, graphql_1.ObjectType)()
+    (0, graphql_1.ObjectType)(),
+    __metadata("design:paramtypes", [String, String, String])
 ], Recipe);
 let RecipeResolver = class RecipeResolver {
-    async getRecipes() {
-        return [
-            { id: 1, title: 'Book 1', author: 'Author 1' },
-            { id: 2, title: 'Book 2', author: 'Author 2' },
+    async recipes() {
+        console.log('THIS IS WORKING');
+        const data = [
+            new Recipe('1', 'Book A', 'Author 1'),
+            new Recipe('1', 'Book B', 'Author 2'),
         ];
+        console.log('DATA: ', data);
+        return data;
     }
 };
 exports.RecipeResolver = RecipeResolver;
@@ -42,8 +51,8 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], RecipeResolver.prototype, "getRecipes", null);
+], RecipeResolver.prototype, "recipes", null);
 exports.RecipeResolver = RecipeResolver = __decorate([
-    (0, graphql_1.Resolver)(Recipe)
+    (0, graphql_1.Resolver)(() => Recipe)
 ], RecipeResolver);
 //# sourceMappingURL=recipe.resolver.js.map

@@ -1,5 +1,5 @@
 type Query {
-  getRecipes: [Recipe]
+  recipes: [Recipe]
 }
 
 type Recipe {

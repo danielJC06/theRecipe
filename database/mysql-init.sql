@@ -52,5 +52,15 @@ CREATE TABLE IF NOT EXISTS GroceryList (
 -- Insert initial data
 INSERT INTO User (id, email, name)
 VALUES (UUID(), 'daniel@danieljcox.dev', 'god');
+-- Create API user
+CREATE USER 'API_FTtJ1bwzwBG8' @'%' IDENTIFIED BY 'xqay5laFJ8yJgQuv';
+GRANT SELECT,
+    INSERT,
+    UPDATE,
+    DELETE ON theRecipe.* TO 'API_FTtJ1bwzwBG8' @'%';
+-- Create Admin user for management client
+CREATE USER 'CB_Y3vc93oQdRuf' @'%' IDENTIFIED BY '1rr1sNaWZINQhVVg';
+GRANT ALL PRIVILEGES ON *.* TO 'CB_Y3vc93oQdRuf' @'%';
+FLUSH PRIVILEGES;
 -- Enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;

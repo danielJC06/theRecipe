@@ -2,21 +2,30 @@ import { Field, ObjectType, Query, Resolver } from '@nestjs/graphql';
 
 @ObjectType()
 class Recipe {
+  constructor(id: string, title: string, author: string) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+  }
   @Field()
-  id: string;
+  public id: string;
   @Field()
-  titles: string;
+  public title: string;
   @Field()
-  author: string;
+  public author: string;
 }
 
-@Resolver(Recipe)
+@Resolver(() => Recipe)
 export class RecipeResolver {
   @Query(() => [Recipe])
-  async getRecipes() {
-    return [
-      { id: 1, title: 'Book 1', author: 'Author 1' },
-      { id: 2, title: 'Book 2', author: 'Author 2' },
+  async recipes() {
+    console.log('THIS IS WORKING');
+    const data = [
+      new Recipe('1', 'Book A', 'Author 1'),
+      new Recipe('1', 'Book B', 'Author 2'),
     ];
+
+    console.log('DATA: ', data);
+    return data;
   }
 }
